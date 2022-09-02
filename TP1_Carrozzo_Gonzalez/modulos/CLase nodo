@@ -1,7 +1,0 @@
-class Nodo:
-    
-    def __init__(self,datoInicial):
-        self.dato = datoInicial
-        self.siguiente = None
-        self.anterior = None
-        
