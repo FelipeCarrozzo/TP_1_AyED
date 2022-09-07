@@ -117,7 +117,45 @@ class ListaDobleEnlazada:
             nuevo_nodo.siguiente = temp
             temp.anterior = nuevo_nodo
             
-
+    def extraer(self, posicion=None):
+        if posicion < 0 or posicion >= self.tamanio:
+            raise IndexError 
+        elif posicion == None:
+            self.cola = self.cola.anterior
+            self.cola.siguiente = None
+        else:
+            actual = self.cabeza
+            previo = None
+            
+            for i in range(posicion-1):
+                previo = actual
+                actual = actual.siguiente
+                
+            if previo == None:
+                self.cabeza = actual.siguiente
+            else:
+                previo.siguiente=actual.siguiente
+        
+        self._tamanio -=1                      
+            
+          
+    def copiar(self):
+        
+        copia_lista = ListaDobleEnlazada()
+        temp = self.cabeza
+        for i in range(self._tamanio+1):
+            copia_lista.anexar(temp.dato)
+            temp = temp.siguiente
+        return copia_lista 
+            
+        
+    def concaternar(self,lista):
+        
+        
+            
+            
+            
+            
 if __name__ == "__main__":
 
           
@@ -137,6 +175,11 @@ if __name__ == "__main__":
     lista1.anexar(-10)
     
     lista1.insertar(2,7)
-    # print(lista1.tamanio())
+    
+    lista1.extraer(2)
+    
     print(lista1)
+    print(lista1.copiar())
+    # print(lista1.tamanio())
+    
     
