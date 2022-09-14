@@ -117,28 +117,29 @@ class ListaDobleEnlazada:
             nuevo_nodo.siguiente = temp
             temp.anterior = nuevo_nodo
             
-    def extraer(self, posicion=None):
-        if posicion < 0 or posicion >= self.tamanio:
+    def extraer(self, posicion=-1):
+        if posicion < -1 or posicion >= self.tamanio:
             raise IndexError 
-        elif posicion == None:
+        elif posicion == -1:
+            eliminado = self.cola
             self.cola = self.cola.anterior
             self.cola.siguiente = None
         else:
             actual = self.cabeza
             previo = None
             
-            for i in range(posicion-1):
+            for i in range(posicion): 
                 previo = actual
                 actual = actual.siguiente
-                
+            eliminado = actual
             if previo == None:
                 self.cabeza = actual.siguiente
             else:
                 previo.siguiente=actual.siguiente
         
         self._tamanio -=1                      
-            
-          
+        return eliminado    
+                  
     def copiar(self):
         
         copia_lista = ListaDobleEnlazada()
@@ -148,8 +149,35 @@ class ListaDobleEnlazada:
             temp = temp.siguiente
         return copia_lista 
             
+    # def invertir(self):
+            
+    def concatenar(self,lista):
         
-    def concaternar(self,lista):
+        lista_actual = self
+        lista_pasada = lista
+        temp = lista.cabeza
+        for i in range(lista.tamanio):
+            self.anexar(temp.dato)
+            temp = temp.siguiente 
+        return self
+        
+    
+    # def concatenar2(self,lista):
+        
+    #     self.cola.siguiente = lista
+    #     lista.cabeza.anterior = self
+        
+    #     nuevo_tamanio = self._tamanio + lista._tamanio
+        
+    #     return self,nuevo_tamanio
+    
+    
+    
+        
+        
+        
+        
+        
         
         
             
@@ -175,11 +203,21 @@ if __name__ == "__main__":
     lista1.anexar(-10)
     
     lista1.insertar(2,7)
-    
-    lista1.extraer(2)
-    
+   
     print(lista1)
-    print(lista1.copiar())
+    print(lista1.extraer(2))
+    print(lista1)
+    lista2 = ListaDobleEnlazada()
+    lista2.agregar(1)
+    lista2.agregar(2)
+    lista2.agregar(3)
+    print(lista2)
+    print(lista1.concatenar(lista2))
+    print(lista1.tamanio)
+    # print(lista1.copiar())
     # print(lista1.tamanio())
+    
+    
+    
     
     
