@@ -181,7 +181,35 @@ class ListaDobleEnlazada:
         self.cabeza = nodo1 
         return self 
     
-     
+    def ordenar(self):
+        # temp = self.cabeza
+        actual = self.cabeza.siguiente #actual es el nodo que quiero insertar a la izquierda
+        aux = actual
+        posicion = False
+       
+        while actual:
+           
+           
+            while aux.anterior and aux.anterior.dato > actual.dato:
+                aux = aux.anterior
+                posicion = True
+           
+            aux.siguiente = actual.siguiente  # desconecto enlaces para posicionarlo
+            actual.siguiente.anterior = aux #
+           
+            if posicion:
+               
+                if aux.anterior == None :
+                    actual.siguiente = aux
+                    actual.anterior = None
+                    self.cabeza = actual
+                else:
+                    actual.anterior = aux.anterior
+                    actual.siguiente = aux
+                    aux.anterior = actual
+                    aux.anterior.siguiente = actual
+ 
+            actual = actual.siguiente #actualiza el siguiente
         
 #%%          
             
@@ -212,6 +240,6 @@ if __name__ == "__main__":
     lista2.agregar(5)
     lista2.agregar("concatenar")
     print(lista2)
-    # print(lista1.concaternar(lista2)) 
+    print(lista1.concaternar(lista2)) 
     print(lista2.invertir2())
     
