@@ -104,7 +104,7 @@ class ListaDobleEnlazada:
             nuevo_nodo.anterior = self.cola.anterior
             nuevo_nodo.siguiente = self.cola
             self.cola.anterior = nuevo_nodo
-            
+            self._tamanio +=1 
         else:
             temp=self.cabeza
             for i in range (posicion):
@@ -113,7 +113,8 @@ class ListaDobleEnlazada:
             nuevo_nodo.anterior = temp.anterior
             nuevo_nodo.siguiente = temp
             temp.anterior = nuevo_nodo
-            
+            self._tamanio +=1
+   
     def extraer(self, posicion=None):
         if posicion < 0 or posicion >= self.tamanio:
             raise IndexError 
@@ -211,6 +212,29 @@ class ListaDobleEnlazada:
  
             actual = actual.siguiente #actualiza el siguiente
         
+    
+    def ordenar2 (self):
+        fin = None
+        while self.cabeza != fin:
+            actual = self.cabeza #r=actual
+            temp = self.cabeza #p = temp
+            
+            while temp.siguiente != fin: #q=cambia
+                cambia = temp.siguiente #Q pasa a ser el siguiente de P
+                if temp.dato > cambia.dato:
+                    temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
+                    cambia.siguiente = temp #q siguiente toma la posicion de p
+                    if temp != self.cabeza:
+                        actual.siguiente = cambia #el siguiente de r toma la posicion de q
+                    else:
+                        self.cabeza = cambia
+                    aux = temp
+                    temp = cambia #p toma la posicion de q
+                    cambia = aux #q toma la posicion de aux
+                actual = temp #r toma la posicion de p
+                temp = temp.siguiente #p toma la posicion de su siguiente
+            fin=temp
+        return self
 #%%          
             
 if __name__ == "__main__":
@@ -238,8 +262,9 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
-    lista2.agregar("concatenar")
+    
     print(lista2)
     print(lista1.concaternar(lista2)) 
     print(lista2.invertir2())
+    print(lista1.ordenar2())
     
