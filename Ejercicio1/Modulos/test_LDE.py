@@ -5,9 +5,10 @@ Created on Thu Sep  1 14:00:21 2022
 @author: Belén
 """
 
-from modulos.LDE import Nodo, ListaDobleEnlazada
+from Ejercicio1.modulos.LDE import Nodo, ListaDobleEnlazada
 import unittest
 import random
+
 
 
 class Test_LDE(unittest.TestCase):

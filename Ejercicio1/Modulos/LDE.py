@@ -12,7 +12,7 @@ class Nodo:
         self.anterior = None
         
         
-    @property
+    @property 
     def dato(self):
         return self._dato
     
@@ -55,7 +55,13 @@ class ListaDobleEnlazada:
     def __str__(self):
         lista = [str(nodo) for nodo in self]
         return str(lista)
-            
+    
+    def __str__(self):
+        lista=[]
+        for i in self:
+            lista.append(str(i))
+        return str(lista)
+        
     def esta_vacia(self):
         return self.tamanio == 0 
     
@@ -68,8 +74,8 @@ class ListaDobleEnlazada:
     def agregar(self, item):
         nuevo_nodo=Nodo(item)
         if self.tamanio==0:
-            self.cabeza=nuevo_nodo
-            self.cola=nuevo_nodo
+            self.cabeza = nuevo_nodo
+            self.cola = nuevo_nodo
         else:
             
             nuevo_nodo.siguiente = self.cabeza
@@ -154,20 +160,20 @@ class ListaDobleEnlazada:
        return self 
    
     
-    def invertir(self):
-        cabeza = self.cabeza
-        cola = self.cola 
-        actual = self.cabeza 
+    # def invertir2(self):      NO ANDA 
+    #     cabeza = self.cabeza
+    #     cola = self.cola 
+    #     actual = self.cabeza 
         
-        while actual:
-            temp = actual.siguiente
-            actual.siguiente = actual.anterior
-            actual.anterior = temp 
-            actual = actual.anterior
-        self.cabeza = cola 
-        self.cola = cabeza 
+    #     while actual:
+    #         temp = actual.siguiente
+    #         actual.siguiente = actual.anterior
+    #         actual.anterior = temp 
+    #         actual = actual.anterior
+    #     self.cabeza = cola 
+    #     self.cola = cabeza 
     
-    def invertir2(self):
+    def invertir(self):
         nodo1 = self.cabeza 
         nodo2 = nodo1.siguiente 
         
@@ -213,7 +219,7 @@ class ListaDobleEnlazada:
             actual = actual.siguiente #actualiza el siguiente
         
     
-    def ordenar2 (self):
+    def ordenar (self):
         fin = None
         while self.cabeza != fin:
             actual = self.cabeza #r=actual
@@ -252,19 +258,28 @@ if __name__ == "__main__":
     lista1.anexar(-5)
     lista1.anexar(-10)
     lista1.insertar(2,7)
-    # print(lista1)
+    print(lista1)
+    print(lista1.invertir())
+    print(lista1.ordenar())
+
+    # lista2 = ListaDobleEnlazada() 
     
-    # print(lista1.copiar())
-    lista2 = ListaDobleEnlazada() 
+    # lista2.agregar(1)
+    # lista2.agregar(2)
+    # lista2.agregar(3)
+    # lista2.agregar(4)
+    # lista2.agregar(5)
     
-    lista2.agregar(1)
-    lista2.agregar(2)
-    lista2.agregar(3)
-    lista2.agregar(4)
-    lista2.agregar(5)
+
+    # print(lista2)
+    # print(lista2.invertir())
+    # print(lista2.ordenar())
     
-    print(lista2)
-    print(lista1.concaternar(lista2)) 
-    print(lista2.invertir2())
-    print(lista1.ordenar2())
-    
+    # lista3 = ListaDobleEnlazada() 
+    # lista3.agregar(10)
+    # lista3.agregar(100)
+    # lista3.agregar(1000)
+    # print(lista3)
+
+    # print(lista3.ordenar())
+
