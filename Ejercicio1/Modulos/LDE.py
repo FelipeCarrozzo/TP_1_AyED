@@ -159,6 +159,8 @@ class ListaDobleEnlazada:
            temp = temp.siguiente 
        return self 
    
+    def __add__(self):
+        pass
     
     # def invertir2(self):      NO ANDA 
     #     cabeza = self.cabeza
