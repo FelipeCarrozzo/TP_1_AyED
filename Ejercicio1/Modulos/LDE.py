@@ -53,8 +53,8 @@ class ListaDobleEnlazada:
             nodo=nodo.siguiente
         
     def __str__(self):
-        lista = [str(nodo) for nodo in self]
-        return str(lista)
+        return str([nodo.dato for nodo in self])
+         
     
     # def __str__(self):
     #     lista=[]
@@ -121,35 +121,41 @@ class ListaDobleEnlazada:
             temp.anterior = nuevo_nodo
             self._tamanio +=1
    
-    def extraer(self, posicion=None):
-        if posicion < 0 or posicion >= self.tamanio:
+    def extraer(self, posicion=-1):
+        if posicion < -1 or posicion >= self._tamanio:
             raise IndexError 
-        elif posicion == None:
-            self.cola = self.cola.anterior
-            self.cola.siguiente = None
-        else:
-            actual = self.cabeza
-            previo = None
             
-            for i in range(posicion-1):
-                previo = actual
-                actual = actual.siguiente
-                
-            if previo == None:
-                self.cabeza = actual.siguiente
-            else:
-                previo.siguiente=actual.siguiente
+        elif posicion == 0:
+            temp = self.cabeza 
+            self.cabeza = temp.siguiente 
+            self._tamanio -= 1
+            return temp
         
+        
+        elif posicion == self._tamanio -1 or posicion == -1:
+            temp = self.cola
+            self.cola = temp.anterior 
+            self._tamanio -=1
+            return temp 
+        
+        else:
+            actual = self.cabeza 
+            for i in range(posicion):
+                actual = actual.siguiente 
+            actual.anterior.siguiente = actual.siguiente 
+            actual.anterior = actual.siguiente 
+            self._tamanio -=1
+            return actual 
+            
+            
         self._tamanio -=1                      
             
           
     def copiar(self):
         
         copia_lista = ListaDobleEnlazada()
-        temp = self.cabeza
-        for i in range(self._tamanio+1):
-            copia_lista.anexar(temp.dato)
-            temp = temp.siguiente
+        for nodo in self:
+            copia_lista.anexar(nodo.dato)
         return copia_lista 
             
     def concatenar(self,lista):
@@ -166,6 +172,7 @@ class ListaDobleEnlazada:
     def invertir(self):
         nodo1 = self.cabeza 
         nodo2 = nodo1.siguiente 
+        temp = self.cabeza
         
         nodo1.siguiente = None 
         nodo1.anterior = nodo2 
@@ -176,7 +183,7 @@ class ListaDobleEnlazada:
             nodo1 = nodo2 
             nodo2 = nodo2.anterior 
         self.cabeza = nodo1 
-        return self 
+        self.cola = temp 
     
     def ordenar2(self):
         # temp = self.cabeza
@@ -270,4 +277,5 @@ if __name__ == "__main__":
     # print(lista3)
 
     # print(lista3.ordenar())
+
 
