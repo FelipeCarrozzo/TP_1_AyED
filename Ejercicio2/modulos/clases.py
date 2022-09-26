@@ -1,6 +1,6 @@
 from Ejercicio1.Modulos.LDE import ListaDobleEnlazada, Nodo
 import random as rd
-from Ejercicio2.modulos.carta
+from Ejercicio2.modulos.Carta import Carta
 class ColaDoble:
     def __init__(self):
         self.items = ListaDobleEnlazada()
