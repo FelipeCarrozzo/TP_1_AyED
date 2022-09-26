@@ -56,11 +56,11 @@ class ListaDobleEnlazada:
         lista = [str(nodo) for nodo in self]
         return str(lista)
     
-    def __str__(self):
-        lista=[]
-        for i in self:
-            lista.append(str(i))
-        return str(lista)
+    # def __str__(self):
+    #     lista=[]
+    #     for i in self:
+    #         lista.append(str(i))
+    #     return str(lista)
         
     def esta_vacia(self):
         return self.tamanio == 0 
@@ -152,7 +152,7 @@ class ListaDobleEnlazada:
             temp = temp.siguiente
         return copia_lista 
             
-    def concaternar(self,lista):
+    def concatenar(self,lista):
        temp = lista.cabeza
        for i in range(lista.tamanio):
            self.anexar(temp.dato)
@@ -162,18 +162,6 @@ class ListaDobleEnlazada:
     def __add__(self):
         pass
     
-    # def invertir2(self):      NO ANDA 
-    #     cabeza = self.cabeza
-    #     cola = self.cola 
-    #     actual = self.cabeza 
-        
-    #     while actual:
-    #         temp = actual.siguiente
-    #         actual.siguiente = actual.anterior
-    #         actual.anterior = temp 
-    #         actual = actual.anterior
-    #     self.cabeza = cola 
-    #     self.cola = cabeza 
     
     def invertir(self):
         nodo1 = self.cabeza 
@@ -190,7 +178,7 @@ class ListaDobleEnlazada:
         self.cabeza = nodo1 
         return self 
     
-    def ordenar(self):
+    def ordenar2(self):
         # temp = self.cabeza
         actual = self.cabeza.siguiente #actual es el nodo que quiero insertar a la izquierda
         aux = actual
@@ -204,7 +192,7 @@ class ListaDobleEnlazada:
                 posicion = True
            
             aux.siguiente = actual.siguiente  # desconecto enlaces para posicionarlo
-            actual.siguiente.anterior = aux #
+            actual.siguiente.anterior = aux 
            
             if posicion:
                
@@ -247,8 +235,6 @@ class ListaDobleEnlazada:
             
 if __name__ == "__main__":
 
-          
-
     nodo1 = Nodo(5)
     # print(nodo1.siguiente)
     
@@ -263,7 +249,7 @@ if __name__ == "__main__":
     print(lista1)
     print(lista1.invertir())
     print(lista1.ordenar())
-
+    
     # lista2 = ListaDobleEnlazada() 
     
     # lista2.agregar(1)

@@ -10,7 +10,6 @@ import unittest
 import random
 
 
-
 class Test_LDE(unittest.TestCase):
     """Test de la clase ListaDobleEnlazada"""
     
