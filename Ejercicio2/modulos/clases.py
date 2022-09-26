@@ -1,15 +1,12 @@
-from Ejercicio1.modulos.LDE import ListaDobleEnlazada, Nodo
-
+from Ejercicio1.Modulos.LDE import ListaDobleEnlazada, Nodo
+import random as rd
+from Ejercicio2.modulos.carta
 class ColaDoble:
     def __init__(self):
         self.items = ListaDobleEnlazada()
-        self.cabeza = None
         
     def __iter__(self):
-        nodo = self.cabeza
-        while nodo:
-            yield nodo 
-            nodo=nodo.siguiente
+        return iter(self.items)
             
     def __str__(self):
         lista = [str(nodo) for nodo in self]
@@ -34,31 +31,45 @@ class ColaDoble:
         return len(self.items) 
     
 
-a=ColaDoble()
-a.agregarFinal(1)
-# a.agregar
-a.agregarFrente(5)
-print(a.estaVacia())
-print(a)
+# a=ColaDoble()
+# a.agregarFinal(1)
+# # a.agregar
+# a.agregarFrente(5)
+# print(a.estaVacia())
+# print(a)
 
-class Mazo(ListaDobleEnlazada, Nodo):
-
+class Mazo:
+    
+    def __init__(self):
+        self.mazo = ColaDoble()
+        self.mazo1 = ColaDoble()
+        # self.
+    
     def crear_mazo(self):    
         valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
         palos = ['♠', '♥', '♦', '♣']
-        mazo = ListaDobleEnlazada()
+        #self.mazo = ColaDoble()
+        lista_cartas = []
         for numero in valores:
             for palo in palos:
-                self.anexar(numero+palo)
-        return mazo 
-
+                lista_cartas.append(Carta(numero,palo))
+        rd.shuffle(lista_carta)
+        
     def repartir(self):
-       pass 
+       for carta in self.mazo:
+           pass
+   
+    
+
 
 if __name__ == "__main__":
     MAZO=Mazo()
     MAZO.crear_mazo()
-    print(MAZO)
+    print(MAZO.mazo)
+    # c = ColaDoble()
+    # c.agregarFinal(1)
+    # c.agregarFinal(15)
+    # print(c)
 
 
 
