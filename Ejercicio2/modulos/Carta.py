@@ -17,7 +17,7 @@ class Carta:
    
     def __cmp__(self, otro):
 
-        # Si tienen la misma figura...
+       
         if self.valor > otro.valor: 
             return 1
         if self.valor < otro.valor: 
