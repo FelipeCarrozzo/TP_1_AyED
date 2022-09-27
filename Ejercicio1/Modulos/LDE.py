@@ -50,7 +50,7 @@ class ListaDobleEnlazada:
         nodo = self.cabeza
         while nodo:
             yield nodo 
-            nodo=nodo.siguiente
+            nodo=nodo.siguiente 
         
     def __str__(self):
         return str([nodo.dato for nodo in self])
@@ -72,6 +72,18 @@ class ListaDobleEnlazada:
         
         
     def agregar(self, item):
+        '''
+        Parameters
+        ----------
+        item : TYPE
+            DESCRIPTION.
+
+        Returns
+        -------
+        None.
+
+        Método agregar(item): agrega un elemento (nodo) 
+        al principio de la lista doblemente enlazada'''
         nuevo_nodo=Nodo(item)
         if self.tamanio==0:
             self.cabeza = nuevo_nodo
@@ -86,6 +98,18 @@ class ListaDobleEnlazada:
         
         
     def anexar(self,item):
+        '''
+        Parameters
+        ----------
+        item : TYPE
+            DESCRIPTION.
+
+        Returns
+        -------
+        None.
+        -------
+        Método anexar(item): anexa un elemento (nodo) 
+        en el extremo final de la lista doblemente enlazada'''
         nuevo_nodo=Nodo(item)
         if self.tamanio == 0:
             self.cabeza=nuevo_nodo
@@ -98,6 +122,30 @@ class ListaDobleEnlazada:
         self._tamanio+=1
        
     def insertar(self,posicion,item):
+        '''
+        Parameters
+        ----------
+        posicion : int
+            ES LA POSICION DENTRO DE 
+            LA LDE EN LA QUE SE INSERTARÁ EL ELEMENTO.
+        item :  str, int, float, booleano
+            ES EL ELEMENTO QUE SE INSERTARÁ DENTRO DE LA LDE
+            EN LA POSICIÓN INDICADA.
+
+        Raises
+        ------
+        IndexError
+            DEVUELVE UN IndexError SI LA POSICIÓN ES UN ENTERO NEGATIVO
+            O SI ES MAYOR AL TAMAÑO DE LA LDE.
+
+        Returns
+        
+        -------
+        None.
+
+        
+
+        '''
         nuevo_nodo=Nodo(item)
         if posicion < 0 or posicion >= self.tamanio:
             raise IndexError 

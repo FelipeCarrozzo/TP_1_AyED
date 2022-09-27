@@ -1,6 +1,9 @@
 from Ejercicio1.Modulos.LDE import ListaDobleEnlazada, Nodo
 import random as rd
 from Ejercicio2.modulos.Carta import Carta
+
+
+
 class ColaDoble:
     def __init__(self):
         self.items = ListaDobleEnlazada()
@@ -41,20 +44,30 @@ class ColaDoble:
 class Mazo:
     
     def __init__(self):
-        self.mazo = ColaDoble()
-        self.mazo1 = ColaDoble()
-        # self.
+        self.mazo = []
+    
+    def __str__(self):
+        return str(self.mazo) 
+    
+    def __iter__(self):
+       pass 
+    
     
     def crear_mazo(self):    
         valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
         palos = ['♠', '♥', '♦', '♣']
-        #self.mazo = ColaDoble()
-        lista_cartas = []
+        
         for numero in valores:
             for palo in palos:
-                lista_cartas.append(Carta(numero,palo))
-        rd.shuffle(lista_carta)
-        
+                carta_nueva = Carta(numero,palo)
+                self.mazo.append(carta_nueva)
+                        
+        rd.shuffle(self.mazo) 
+        return self.mazo
+    
+    def comprarar_carta(self):
+        pass
+    
     def repartir(self):
        for carta in self.mazo:
            pass
@@ -63,13 +76,16 @@ class Mazo:
 
 
 if __name__ == "__main__":
-    MAZO=Mazo()
-    MAZO.crear_mazo()
-    print(MAZO.mazo)
+    # MAZO=Mazo()
+    # MAZO.crear_mazo()
+    # print(MAZO.mazo)
     # c = ColaDoble()
     # c.agregarFinal(1)
     # c.agregarFinal(15)
     # print(c)
+    obj=Mazo()
+    obj.crear_mazo()
+    print(obj)
 
 
 
