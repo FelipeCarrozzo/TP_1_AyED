@@ -11,11 +11,6 @@ class Carta:
         self._palo = palo
         self._cara = "-X"
     
-    def __iter__(self):
-        nodo = self.cabeza
-        while nodo:
-            yield nodo 
-            nodo=nodo.siguiente
             
     def __str__(self):
        return str(self.valores[self._valor]+self.palos[self._palo])
