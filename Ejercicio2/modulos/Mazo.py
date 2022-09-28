@@ -2,7 +2,7 @@
 """
 Created on Tue Sep 27 17:22:23 2022
 
-ESTE "MAZO" ANDA BIEN.
+
 """
 from Ejercicio2.modulos.ColaDoble import ColaDoble
 from Ejercicio2.modulos.Carta import Carta
@@ -15,13 +15,23 @@ class Mazo:
     def __str__(self):
         return str(self.mazo)
     
+    def __iter__(self):
+        return iter(self.mazo)
+    
     def agregar_carta(self,carta): #Metodo que agrega cartas al mazo principal
         self.mazo.agregarFinal(carta)
         
-    def juegar_carta(self,nuevo_estado): #metodo para dar vuelta una carta
+    def jugar_carta(self,nuevo_estado="Boca abajo"): #metodo para dar vuelta una carta
         carta = self.mazo.removerFinal()
         carta.estado = nuevo_estado 
-        return  carta      
+        return  carta     
+    
+    def Jugador_gana(self,lista_carta):
+        carta = self.agregarFrente(lista_carta)
+        
+    # def J_2_gana(self,carta1,carta2):
+    #     carta = self.agregarFrente(carta1,carta2)
+    
     
     
     

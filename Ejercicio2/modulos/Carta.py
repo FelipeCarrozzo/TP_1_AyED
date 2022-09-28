@@ -3,11 +3,12 @@
 class Carta:
        
     
-    def __init__(self, valor = 0, palo = 0,estado = "Boca abaj"):
+    def __init__(self, valor = 0, palo = 0,estado = "Boca abajo",jerarquia=0):
         
         self._valor = valor
         self._palo = palo
         self._estado = estado
+        self._jerarquia = jerarquia
             
     def __str__(self):
         if self._estado == "Boca abajo":

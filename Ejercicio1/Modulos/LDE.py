@@ -47,6 +47,7 @@ class ListaDobleEnlazada:
         self._tamanio = 0  
     
     def __iter__(self):
+        
         nodo = self.cabeza
         while nodo:
             yield nodo 
@@ -192,6 +193,7 @@ class ListaDobleEnlazada:
             actual = self.cabeza 
             for i in range(posicion):
                 actual = actual.siguiente 
+                
             actual.anterior.siguiente = actual.siguiente 
             actual.anterior = actual.siguiente 
             self._tamanio -=1
@@ -215,8 +217,8 @@ class ListaDobleEnlazada:
            temp = temp.siguiente 
        return self 
    
-    def __add__(self):
-        pass
+    def __add__(self,a):
+        return self.concatenar(a)
     
     
     def invertir(self):
@@ -304,7 +306,7 @@ if __name__ == "__main__":
     lista1.anexar(-10)
     lista1.insertar(2,7)
     print(lista1)
-    print(lista1.invertir())
+    #print(lista1.invertir())
     print(lista1.ordenar())
     
     lista2 = ListaDobleEnlazada() 
@@ -314,8 +316,8 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
-
-    print(lista2)
+    print(lista2[1])
+    #print(lista2)
     # print(lista2.invertir())
     # print(lista2.ordenar())
     
@@ -326,5 +328,8 @@ if __name__ == "__main__":
     # print(lista3)
 
     # print(lista3.ordenar())
+    
+    
+    # print(lista1.extraer())
 
 

@@ -41,6 +41,7 @@ if __name__ == "__main__":
     a.agregarFinal(1)
     # a.agregar
     a.agregarFrente(5)
+    a.removerFinal()
     print(a.estaVacia())
     print(a)
 
