@@ -17,17 +17,17 @@ class ColaDoble():
     def estaVacia(self):
         return self.items.esta_vacia()
 
-    def agregarFrente(self, item):
-        self.items.agregar(item)
-
-    def agregarFinal(self, item):
+    def agregarFrente(self, item): #anexa al final de la cola doble
         self.items.anexar(item)
 
+    def agregarFinal(self, item):
+        self.items.agregar(item) # agrega al principio de la cola doble
+
     def removerFrente(self):
-        return self.items.extraer(0)
+        return self.items.extraer(self.items.tamanio-1)
 
     def removerFinal(self):
-        return self.items.extraer()
+        return self.items.extraer(0) #remueve del principio
 
     def tamano(self):
         return len(self.items) 

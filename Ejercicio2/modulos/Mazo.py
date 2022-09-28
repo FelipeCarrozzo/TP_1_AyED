@@ -6,7 +6,6 @@ Created on Tue Sep 27 17:22:23 2022
 """
 from Ejercicio2.modulos.ColaDoble import ColaDoble
 from Ejercicio2.modulos.Carta import Carta
-import random as rd 
 class Mazo:
     
     def __init__(self):
