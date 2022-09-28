@@ -22,7 +22,7 @@ class JuegoGuerra:
                 carta=Carta(numero,palo,jerarquia)
                 lista_cartas.append(carta)
             
-        # rd.seed(self.semilla)
+        rd.seed(self.semilla)
         rd.shuffle(lista_cartas)
         # cartas_mezcladas = lista
         for carta in lista_cartas:
