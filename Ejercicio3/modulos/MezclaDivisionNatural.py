@@ -27,7 +27,24 @@ def dividir_archivo (archivo,F1,F2):
 #         while archivo1:
 #             pass
     
-    
+        
+# def mezclar_archivos(archivo1,archivo2,archivo_salida):
+#     with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida, "w")as f:
+#         dato1 = f1.readline()        # es el primer dato de f1
+#         dato2 = f2.readline()        # es el primer dato de f2
+#         dato3 = f2.readline()
+#         dato_aux = dato1             # es el dato que queremos escribir en la lista de salida 
+#         while dato3:    #mientras existan datos en f2 
+#             if dato3 > dato2:             #comparo el segundo dato de f2 con el primero de f2 para saber si son un grupo
+#                 if dato2 < dato1:             #si el primer numero de f2 archivo es menor al primer numero de f1
+#                     if dato_aux == dato1:      # que se cambie el dato que queremos escribir. si es dato1:
+#                         dato_aux = dato2       # que cambie a dato2, porque es menor que dato1
+#                         dato2 = dato3      # que avance al segundo dato de f2 para comparar con dato1 (de f1)
+#                         dato3 = f2.readline()
+#                     else:
+#                         dato_aux = dato1      #si el primer numero de f1 es menor que el primero de f2, que se escriba
+                        
+#             f.write(dato_aux)
         
         
 if __name__ == '__main__':
