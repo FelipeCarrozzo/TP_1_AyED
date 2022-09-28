@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['Ejercicio2\\modulos\\ColaDoble.py', 'Ejercicio2\\modulos\\Carta.py', 'Ejercicio2\\modulos\\Mazo.py', 'Ejercicio1\\Modulos\\LDE.py']
+recent_files = []
 
 [main]
 version = 0.2.0

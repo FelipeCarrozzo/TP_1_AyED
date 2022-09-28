@@ -1,9 +1,8 @@
 
-
 class Carta:
        
     
-    def __init__(self, valor = 0, palo = 0,estado = "Boca abajo",jerarquia=0):
+    def __init__(self, valor = 0, palo = 0, estado = "Boca abajo",jerarquia=0):
         
         self._valor = valor
         self._palo = palo
