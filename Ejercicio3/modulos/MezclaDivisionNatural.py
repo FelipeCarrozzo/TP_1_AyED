@@ -5,8 +5,8 @@
 #     f=datos.readline()
 
 
-def dividir_archivo (archivo):
-    with open(archivo) as datos, open("..../datos/f1.txt","w") as f1, open("./datos/f2.txt","w")as f2:
+def dividir_archivo (archivo,F1,F2):
+    with open(archivo) as datos, open(F1,"w") as f1, open(F2,"w")as f2:
         dato1 = datos.readline()
         f1.write(dato1)
         dato2 = datos.readline()
@@ -21,17 +21,17 @@ def dividir_archivo (archivo):
             archi_aux.write(dato2)
             dato1 = dato2
             dato2 = datos.readline()
-            
-def mezclar_archivos(archivo1,archivo2,archivo_salida):
-    with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida)as f:
-        while archivo1:
-            pass
+        return dato1, dato2
+# def mezclar_archivos(archivo1,archivo2,archivo_salida):
+#     with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida)as f:
+#         while archivo1:
+#             pass
     
     
         
-    # return datos
         
 if __name__ == '__main__':
-    datos = dividir_archivo("C:/Users/usr/Documents/TP1_AyED/Ejercicio3/modulos/datos/datos.txt")
-        
+    datos = dividir_archivo("./datos.txt","./f1.txt","./f2.txt")
+    print(datos)
+    
     

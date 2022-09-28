@@ -75,16 +75,17 @@ class ListaDobleEnlazada:
         '''
         Parameters
         ----------
-        item : TYPE
-            DESCRIPTION.
-
+        item : TYPE int, float, str
+            
+        MÉTODO AGREGAR(item): AGREGA UN ELEMENTO (Nodo)
+        AL PRINCIPIO DE LA LISTA DOBLEMENTE ENLAZADA
         Returns
         -------
         None.
 
-        Método agregar(item): agrega un elemento (nodo) 
-        al principio de la lista doblemente enlazada'''
+        '''
         nuevo_nodo=Nodo(item)
+        
         if self.tamanio==0:
             self.cabeza = nuevo_nodo
             self.cola = nuevo_nodo
@@ -111,6 +112,7 @@ class ListaDobleEnlazada:
         Método anexar(item): anexa un elemento (nodo) 
         en el extremo final de la lista doblemente enlazada'''
         nuevo_nodo=Nodo(item)
+        
         if self.tamanio == 0:
             self.cabeza=nuevo_nodo
             self.cola=nuevo_nodo
@@ -143,8 +145,6 @@ class ListaDobleEnlazada:
         -------
         None.
 
-        
-
         '''
         nuevo_nodo=Nodo(item)
         if posicion < 0 or posicion >= self.tamanio:
@@ -154,11 +154,13 @@ class ListaDobleEnlazada:
             self.agregar(item)
             
         elif posicion == self.tamanio-1:
+
             self.cola.anterior.siguiente = nuevo_nodo
             nuevo_nodo.anterior = self.cola.anterior
             nuevo_nodo.siguiente = self.cola
             self.cola.anterior = nuevo_nodo
             self._tamanio +=1 
+
         else:
             temp=self.cabeza
             for i in range (posicion):
@@ -305,16 +307,15 @@ if __name__ == "__main__":
     print(lista1.invertir())
     print(lista1.ordenar())
     
-    # lista2 = ListaDobleEnlazada() 
+    lista2 = ListaDobleEnlazada() 
     
-    # lista2.agregar(1)
-    # lista2.agregar(2)
-    # lista2.agregar(3)
-    # lista2.agregar(4)
-    # lista2.agregar(5)
-    
+    lista2.agregar(1)
+    lista2.agregar(2)
+    lista2.agregar(3)
+    lista2.agregar(4)
+    lista2.agregar(5)
 
-    # print(lista2)
+    print(lista2)
     # print(lista2.invertir())
     # print(lista2.ordenar())
     

@@ -11,8 +11,8 @@ def crear_archivo_de_datos(nombre):
     print('Cantidad de valores a escribir:', N)
     
     # truncar archivo si existe
-    with open(nombre, 'w') as archivo:
-        pass
+    # with open(nombre, 'w') as archivo:
+    #     pass
     
     # escribir datos
     N_restantes = N

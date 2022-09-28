@@ -4,21 +4,20 @@ Created on Tue Sep 27 17:22:23 2022
 
 ESTE "MAZO" ANDA BIEN.
 """
-import random as rd
 class Mazo:
     
     def __init__(self):
-        self.mazo = []
+        self._mazo = mazo
     
     def __str__(self):
-        return str(self.mazo) 
+        return str(self._mazo)
     
-    
-    
-    
+
     
     
 if __name__ == "__main__":
     obj=Mazo()
     obj.crear_mazo(5)
     print(obj)
+    
+    
