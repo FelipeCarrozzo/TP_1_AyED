@@ -237,7 +237,7 @@ class ListaDobleEnlazada:
         self.cabeza = nodo1 
         self.cola = temp 
     
-    def ordenar2(self):
+    def ordenar(self):
         # temp = self.cabeza
         actual = self.cabeza.siguiente #actual es el nodo que quiero insertar a la izquierda
         aux = actual
@@ -268,28 +268,28 @@ class ListaDobleEnlazada:
             actual = actual.siguiente #actualiza el siguiente
         
     
-    def ordenar (self):
-        fin = None
-        while self.cabeza != fin:
-            actual = self.cabeza #r=actual
-            temp = self.cabeza #p = temp
+    # def ordenar (self):
+    #     fin = None
+    #     while self.cabeza != fin:
+    #         actual = self.cabeza #r=actual
+    #         temp = self.cabeza #p = temp
             
-            while temp.siguiente != fin: #q=cambia
-                cambia = temp.siguiente #Q pasa a ser el siguiente de P
-                if temp.dato > cambia.dato:
-                    temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
-                    cambia.siguiente = temp #q siguiente toma la posicion de p
-                    if temp != self.cabeza:
-                        actual.siguiente = cambia #el siguiente de r toma la posicion de q
-                    else:
-                        self.cabeza = cambia
-                    aux = temp
-                    temp = cambia #p toma la posicion de q
-                    cambia = aux #q toma la posicion de aux
-                actual = temp #r toma la posicion de p
-                temp = temp.siguiente #p toma la posicion de su siguiente
-            fin=temp
-        return self
+    #         while temp.siguiente != fin: #q=cambia
+    #             cambia = temp.siguiente #Q pasa a ser el siguiente de P
+    #             if temp.dato > cambia.dato:
+    #                 temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
+    #                 cambia.siguiente = temp #q siguiente toma la posicion de p
+    #                 if temp != self.cabeza:
+    #                     actual.siguiente = cambia #el siguiente de r toma la posicion de q
+    #                 else:
+    #                     self.cabeza = cambia
+    #                 aux = temp
+    #                 temp = cambia #p toma la posicion de q
+    #                 cambia = aux #q toma la posicion de aux
+    #             actual = temp #r toma la posicion de p
+    #             temp = temp.siguiente #p toma la posicion de su siguiente
+    #         fin=temp
+    #     return self
 #%%          
             
 if __name__ == "__main__":
@@ -307,7 +307,7 @@ if __name__ == "__main__":
     lista1.insertar(2,7)
     print(lista1)
     #print(lista1.invertir())
-    print(lista1.ordenar())
+    # print(lista1.ordenar())
     
     lista2 = ListaDobleEnlazada() 
     
@@ -316,8 +316,8 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
-    print(lista2[1])
-    #print(lista2)
+
+    print(lista2)
     # print(lista2.invertir())
     # print(lista2.ordenar())
     
@@ -326,7 +326,7 @@ if __name__ == "__main__":
     # lista3.agregar(100)
     # lista3.agregar(1000)
     # print(lista3)
-
+    print(lista1+lista2)
     # print(lista3.ordenar())
     
     
