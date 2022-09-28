@@ -22,29 +22,59 @@ def dividir_archivo (archivo,F1,F2):
             dato1 = dato2
             dato2 = datos.readline()
         return dato1, dato2
-# def mezclar_archivos(archivo1,archivo2,archivo_salida):
-#     with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida)as f:
-#         while archivo1:
-#             pass
-    
-        
-# def mezclar_archivos(archivo1,archivo2,archivo_salida):
-#     with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida, "w")as f:
-#         dato1 = f1.readline()        # es el primer dato de f1
-#         dato2 = f2.readline()        # es el primer dato de f2
-#         dato3 = f2.readline()
-#         dato_aux = dato1             # es el dato que queremos escribir en la lista de salida 
-#         while dato3:    #mientras existan datos en f2 
-#             if dato3 > dato2:             #comparo el segundo dato de f2 con el primero de f2 para saber si son un grupo
-#                 if dato2 < dato1:             #si el primer numero de f2 archivo es menor al primer numero de f1
-#                     if dato_aux == dato1:      # que se cambie el dato que queremos escribir. si es dato1:
-#                         dato_aux = dato2       # que cambie a dato2, porque es menor que dato1
-#                         dato2 = dato3      # que avance al segundo dato de f2 para comparar con dato1 (de f1)
-#                         dato3 = f2.readline()
-#                     else:
-#                         dato_aux = dato1      #si el primer numero de f1 es menor que el primero de f2, que se escriba
-                        
-#             f.write(dato_aux)
+
+def mezclar_archivos(archivo1,archivo2,archivo_salida):
+    with open(archivo1,"r") as f1, open(archivo2,"r") as f2, open(archivo_salida, "w")as f:
+        dato1 = f1.readline()        # es el primer dato de f1
+        dato2 = f2.readline()        # es el primer dato de f2
+        dato_aux = dato1             # es el dato que queremos escribir en la lista de salida 
+          
+        sublistaf1 = True
+        sublistaf2 = True
+        while dato1 and dato2:    #mientras existan datos en dato1 y dato2 
+            
+            if dato2 < dato1:
+                dato_aux = dato2
+                dato2 = f2.readline()
+                if dato2 < dato_aux:
+                    
+                    sublistaf2 = False 
+            else:
+                dato_aux = dato1
+                dato1 = f1.readline()       
+                if dato1 < dato_aux:
+                    
+                    sublistaf1 = False
+                    
+            if sublistaf1 == False:
+                f.write(dato_aux)
+                while dato_aux < dato2:
+                    dato_aux = dato2
+                    dato2 = f2.readline()
+                    f.write(dato_aux)
+                
+                
+            elif sublistaf2 == False:
+                f.write(dato_aux)
+                while dato_aux < dato1:
+                    dato_aux = dato1
+                    dato1 = f1.readline()
+                    f.write(dato_aux)
+                
+            if sublistaf1 != False and sublistaf2 != False:
+                f.write(dato_aux)
+            else:
+                sublistaf1 = True    
+                sublistaf2 = True
+            
+        while dato2 and dato1 == None:  #No anda este while
+            dato_aux = dato2
+            dato2 = f2.readline()
+            f.write(dato_aux)
+        while dato1 and dato2 == None:
+            dato_aux = dato1
+            dato1 = f1.readline()
+            f.write(dato_aux)
         
         
 if __name__ == '__main__':
