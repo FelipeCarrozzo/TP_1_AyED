@@ -1,27 +1,43 @@
-from Ejercicio2.modulos.ClaseMazoDEF import Mazo
+from Ejercicio2.modulos.Mazo import Mazo
+from Ejercicio2.modulos.Carta import Carta 
 import random as rd
 
-class JuegoGuerra(Mazo):
-    
-    def __init__(self):
-        self.mazomesa = []
-        self.mazo1 = Mazo(1)
-        self.mazo2 = Mazo(2)
+class JuegoGuerra:
+     
+    def __init__(self,semilla):
+        self.mazomesa = Mazo()
+        self.mazo1 = Mazo()
+        self.mazo2 = Mazo()
+        self.semilla = semilla 
         
-    def crear_mazo(self,semilla):    
-        '''creo un método ya dentro de JuegoGuerra, creando el mazo
-        dentro del archivo donde "se va a jugar"'''
+    # def crear_mazo(self):    
+    #     '''creo un método ya dentro de JuegoGuerra, creando el mazo
+    #     dentro del archivo donde "se va a jugar"'''
         
+        # valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+        # palos = ['♠', '♥', '♦', '♣']
+        
+        # for numero in valores:
+        #     for palo in palos:
+        #         self.mazomesa.agregar_carta(numero+palo)
+        # rd.seed(self.semilla)
+        # rd.shuffle(self.mazomesa) 
+        # return self.mazomesa 
+    def crear_mazo(self):    
         valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
         palos = ['♠', '♥', '♦', '♣']
+        lista_cartas = [] 
         
         for numero in valores:
             for palo in palos:
-                self.mazomesa.append(numero+palo)
-        rd.seed(semilla)
-        rd.shuffle(self.mazomesa) 
+                lista_cartas.append(Carta(numero,palo))
+            
+        rd.seed(self.semilla)
+        rd.shuffle(lista_cartas)
+        # cartas_mezcladas = lista
+        for carta in lista_cartas:
+            self.mazomesa.agregar_carta(carta)
         return self.mazomesa
-
 
 
 
@@ -31,7 +47,7 @@ class JuegoGuerra(Mazo):
         pass
     
 if __name__ == "__main__":
-    obj=JuegoGuerra()
-    obj.crear_mazo(3) #3 es la semilla, que hace que la "mezcla" de las cartas 
+    obj=JuegoGuerra(3)
+    obj.crear_mazo() #3 es la semilla, que hace que la "mezcla" de las cartas 
                         #(shuffle) sea siempre igual
-    print(obj)
+    print(obj.mazomesa)

@@ -1,25 +1,19 @@
-from Ejercicio1.Modulos.LDE import Nodo
+
 
 class Carta:
+       
     
-    valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
-    palos = ['♠', '♥', '♦', '♣']
-    rango =[1,2,3,4,5,6,7,8,9,10,11,12,13] 
-    
-    
-    def __init__(self, valor = 0, palo = 0):
+    def __init__(self, valor = 0, palo = 0,estado = "Boca abaj"):
         
         self._valor = valor
         self._palo = palo
-        # self._cara = "-X"
-        
-        
-    
+        self._estado = estado
             
     def __str__(self):
-       return str(self.valores[self._valor]+self.palos[self._palo])
-   
-   
+        if self._estado == "Boca abajo":
+            return "-X"    #pregunta si la carta está boca abajo, no muestra el valor ni el palo. 
+        return str(self._valor) + str(self._palo)
+       
     @property
     def valor(self):
         return self._valor
@@ -29,12 +23,16 @@ class Carta:
         return self._palo
     
     @property
-    def cara(self):
-        return self._cara
+    def estado(self):
+        return self._estado
     
+    @estado.setter 
+    def estado(self,nuevo_estado):
+        self._estado = nuevo_estado
+        
     
 if __name__  == "__main__":
-    obj=Carta(2,0,0)
+    obj=Carta(2,2)
     print(obj)
     
     
