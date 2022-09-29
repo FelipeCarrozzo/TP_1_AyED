@@ -174,17 +174,19 @@ class ListaDobleEnlazada:
    
     def extraer(self, posicion=-1):
         if posicion < -1 or posicion >= self._tamanio:
+            '''La posición está fuera del rango'''
             raise IndexError 
             
         elif posicion == 0:
             temp = self.cabeza 
-            self.cabeza = temp.siguiente 
+            self.cabeza = temp.siguiente #se reemplaza la cabeza por quien era su siguiente 
             self._tamanio -= 1
             return temp
         
         
         elif posicion == self._tamanio -1 or posicion == -1:
             temp = self.cola
+            self.cola.anterior.siguiente = None
             self.cola = temp.anterior 
             self._tamanio -=1
             return temp 
@@ -237,77 +239,41 @@ class ListaDobleEnlazada:
         self.cabeza = nodo1 
         self.cola = temp 
     
-    def ordenar(self):
-        # temp = self.cabeza
-        actual = self.cabeza.siguiente #actual es el nodo que quiero insertar a la izquierda
-        aux = actual
-        posicion = False
-       
-        while actual:
-           
-           
-            while aux.anterior and aux.anterior.dato > actual.dato:
-                aux = aux.anterior
-                posicion = True
-           
-            aux.siguiente = actual.siguiente  # desconecto enlaces para posicionarlo
-            actual.siguiente.anterior = aux 
-           
-            if posicion:
-               
-                if aux.anterior == None :
-                    actual.siguiente = aux
-                    actual.anterior = None
-                    self.cabeza = actual
-                else:
-                    actual.anterior = aux.anterior
-                    actual.siguiente = aux
-                    aux.anterior = actual
-                    aux.anterior.siguiente = actual
- 
-            actual = actual.siguiente #actualiza el siguiente
         
     
-    # def ordenar (self):
-    #     fin = None
-    #     while self.cabeza != fin:
-    #         actual = self.cabeza #r=actual
-    #         temp = self.cabeza #p = temp
+    def ordenar (self):
+        fin = None
+        while self.cabeza != fin:
+            actual = self.cabeza #r=actual
+            temp = self.cabeza #p = temp
             
-    #         while temp.siguiente != fin: #q=cambia
-    #             cambia = temp.siguiente #Q pasa a ser el siguiente de P
-    #             if temp.dato > cambia.dato:
-    #                 temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
-    #                 cambia.siguiente = temp #q siguiente toma la posicion de p
-    #                 if temp != self.cabeza:
-    #                     actual.siguiente = cambia #el siguiente de r toma la posicion de q
-    #                 else:
-    #                     self.cabeza = cambia
-    #                 aux = temp
-    #                 temp = cambia #p toma la posicion de q
-    #                 cambia = aux #q toma la posicion de aux
-    #             actual = temp #r toma la posicion de p
-    #             temp = temp.siguiente #p toma la posicion de su siguiente
-    #         fin=temp
-    #     return self
+            while temp.siguiente != fin: #q=cambia
+                cambia = temp.siguiente #Q pasa a ser el siguiente de P
+                if temp.dato > cambia.dato:
+                    temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
+                    cambia.siguiente = temp #q siguiente toma la posicion de p
+                    if temp != self.cabeza:
+                        actual.siguiente = cambia #el siguiente de r toma la posicion de q
+                    else:
+                        self.cabeza = cambia
+                    aux = temp
+                    temp = cambia #p toma la posicion de q
+                    cambia = aux #q toma la posicion de aux
+                actual = temp #r toma la posicion de p
+                temp = temp.siguiente #p toma la posicion de su siguiente
+            fin=temp
+        return self
 #%%          
             
 if __name__ == "__main__":
-
-    nodo1 = Nodo(5)
-    # print(nodo1.siguiente)
     
     lista1 = ListaDobleEnlazada()
     
-    lista1.agregar(1)
     lista1.agregar(5)
-    lista1.agregar(15)
-    lista1.anexar(-5)
-    lista1.anexar(-10)
-    lista1.insertar(2,7)
-    print(lista1)
-    #print(lista1.invertir())
-    # print(lista1.ordenar())
+    lista1.agregar(4)
+    lista1.agregar(3)
+    lista1.agregar(2)
+    lista1.agregar(1)
     
     lista2 = ListaDobleEnlazada() 
     
@@ -316,20 +282,12 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
-
     print(lista2)
-    # print(lista2.invertir())
+    lista2.extraer(-1)
+    # print(f"INVERTIR --> {lista2.invertir()}")
     # print(lista2.ordenar())
+    print(lista1)
+    print(lista2)
+    # print(lista2)
     
-    # lista3 = ListaDobleEnlazada() 
-    # lista3.agregar(10)
-    # lista3.agregar(100)
-    # lista3.agregar(1000)
-    # print(lista3)
-    print(lista1+lista2)
-    # print(lista3.ordenar())
-    
-    
-    # print(lista1.extraer())
-
 
