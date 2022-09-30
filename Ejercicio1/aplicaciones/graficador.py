@@ -10,15 +10,15 @@ import random
 import time
 import matplotlib.pyplot as plt
 
-valores_n = [10**i for i in range(1,7)]
+valores_n = [10**i for i in range(1,4)]
 tiempo = []
 
 for n in valores_n:
-    lde=ListaDobleEnlazada()
-    for i in valores_n:
-        lde.agregar(random.randint(-100,100))
+    LDE=ListaDobleEnlazada()
+    for i in range(n):
+        LDE.agregar(random.randint(-100,100))
     tic = time.perf_counter()
-    lde.ordenar()
+    LDE.ordenar()
     toc = time.perf_counter()
     tiempo.append(toc-tic) 
     
