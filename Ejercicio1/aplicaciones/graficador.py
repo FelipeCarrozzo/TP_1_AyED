@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug 24 13:26:15 2022
-
-@author: je_su
-"""
 from Ejercicio1.Modulos.LDE import ListaDobleEnlazada
 
 import random

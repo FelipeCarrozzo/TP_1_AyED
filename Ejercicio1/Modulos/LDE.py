@@ -4,6 +4,7 @@ Created on Wed Aug 31 13:56:04 2022
 @author: alumno
 """
 #%%  creación del nodo
+
 class Nodo:
     
     def __init__(self,datoInicial):
@@ -39,6 +40,7 @@ class Nodo:
     def __str__(self):
         return str(self.dato)
 #%% creacion de la lista doblemente enlazada
+
 class ListaDobleEnlazada:
 
     def __init__(self):
@@ -51,14 +53,14 @@ class ListaDobleEnlazada:
         nodo = self.cabeza
         while nodo:
             yield nodo 
-            nodo=nodo.siguiente 
+            nodo = nodo.siguiente 
         
     def __str__(self):
         return str([nodo.dato for nodo in self])
          
     def esta_vacia(self):
         return self.tamanio == 0 
-    
+ 
     @property
     def tamanio(self):
         return self._tamanio
@@ -284,15 +286,11 @@ class ListaDobleEnlazada:
     
     
     def ordenar (self):
-        '''
-        
-
-        Returns
-        -------
-        TYPE
-            DESCRIPTION.
-
-        '''
+        '''el método de ordenamiento implementado fue el de burbuja. 
+        Este, toma de a dos elementos y los compara: si el primero 
+        es más chico que el segundo, está ordenado y el cambio 
+        no se produce. De lo contrario, invierte las posiciones 
+        de estos dos elementos. '''
         extremo = None
         while self.cabeza != extremo:
             actual = self.cabeza 
@@ -340,8 +338,10 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
+    print(lista2)
     lista2.insertar(4, "fito")
-    # print(lista2)
+    print(lista1.concatenar(lista2))
+    
     # print(lista2.invertir())
     # print(lista2.ordenar())
     
