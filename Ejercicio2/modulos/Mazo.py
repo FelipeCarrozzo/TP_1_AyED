@@ -16,6 +16,8 @@ class Mazo:
     
     def __iter__(self):
         return iter(self.mazo)
+
+#%%
     
     def agregar_carta(self,carta): #Metodo que agrega cartas al mazo principal
         self.mazo.agregarFinal(carta)
@@ -25,17 +27,11 @@ class Mazo:
         carta.estado = nuevo_estado 
         return  carta     
     
-    def Jugador_gana(self,lista_carta):
-        carta = self.agregarFrente(lista_carta)
+    def jugador_gana(self,lista_carta): #metodo para agregar las cartas ganadas ABAJO del mazo
+        carta = self.agregarFrente(lista_carta)             
         
-    # def J_2_gana(self,carta1,carta2):
-    #     carta = self.agregarFrente(carta1,carta2)
     
-    
-    
-    
-
-
+#%%
     
     
 if __name__ == "__main__":

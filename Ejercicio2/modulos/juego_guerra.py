@@ -23,35 +23,35 @@ class JuegoGuerra:
             
         rd.seed(self.semilla)
         rd.shuffle(lista_cartas)
-        # cartas_mezcladas = lista
+
         for carta in lista_cartas:
             self.mazomesa.agregar_carta(carta)
         return self.mazomesa
 
+#%% 
 
-        
     def repartir(self):
-        for i, carta in enumerate(self.mazomesa):
-            if i%2 == 0:
-                self.mazo1.agregar_carta(carta)
+        for i,carta in enumerate(self.mazomesa):  # i es la posición
+            if i%2 == 0:                          # si el resto de pos div 2 = 0:
+                self.mazo1.agregar_carta(carta)   # agregar al mazo 1
                 
-            if i%2 != 0:  
-                self.mazo2.agregar_carta(carta)
+            if i%2 != 0:                          # si el resto de pos div 2 ≠ 0:
+                self.mazo2.agregar_carta(carta)   # agrego al mazo 2
                 
-        return self.mazo1, self.mazo2
+        return self.mazo1, self.mazo2, "MAZO REPARTIDO"
     
+#%%
     def jugar(self):
-
         while self.mazo1 and self.mazo2:
             cartas_mesa =  []
-        
+
             c1=self.mazo1.jugar_carta("boca abajo")
             cartas_mesa.append(c1)
             c2=self.mazo2.jugar_carta("boca abajo")
             cartas_mesa.append(c2)
             '''Tomo la carta de mas arriba de cada mazo
             y las agrego a carta_mesa respectivamente'''
-            if cartas_mesa[-2] > cartas_mesa[-1]:
+            if cartas_mesa[-2] > cartas_mesa[-2]:
                 for i in cartas_mesa:
                     self.mazo1.agregarFrente(i)
                 #self.mazo1.Jugador_gana(cartas_mesa)
@@ -77,9 +77,9 @@ class JuegoGuerra:
 
 if __name__ == "__main__":
     obj=JuegoGuerra(3)
-    obj.crear_mazo() #3 es la semilla, que hace que la "mezcla" de las cartas 
+    print(obj.crear_mazo()) #3 es la semilla, que hace que la "mezcla" de las cartas 
     obj.repartir()  
     print(obj.mazo1)
     print(obj.mazo2)
     #print(obj.repartir())
-    # print(obj.jugar())
+    print(obj.jugar())
