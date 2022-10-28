@@ -28,6 +28,7 @@ class Mazo:
         return  str(carta)     
     
     def jugador_gana(self,lista_carta): #metodo para agregar las cartas ganadas ABAJO del mazo
+
         
         carta = self.mazo.agregarFrente(lista_carta)
          

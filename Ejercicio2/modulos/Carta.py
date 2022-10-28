@@ -1,6 +1,8 @@
 
 class Carta:
+
     def __init__(self, valor = 0, palo = 0, jerarquia=0, estado = "Boca abajo"):
+
         '''
         Parameters
         ----------
@@ -27,6 +29,7 @@ class Carta:
         if self._estado == "Boca abajo":
             return "-X"    #pregunta si la carta está boca abajo, no muestra el valor ni el palo. 
         else:
+
             return str(self._valor)+","+ str(self._palo)
         
     def __lt__(self,otro):
@@ -59,8 +62,10 @@ class Carta:
     
     
 if __name__  == "__main__":
-    carta=Carta(5,6,3,"A")
-    print(carta)
+
+    obj=Carta()
+    print(obj)
+
     
     
     

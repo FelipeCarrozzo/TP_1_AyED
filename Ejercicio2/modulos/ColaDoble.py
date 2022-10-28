@@ -12,7 +12,9 @@ class ColaDoble():
             
     def __str__(self):
         lista = [str(nodo) for nodo in self]
+
         return str(lista) #se agrego str
+
 
 #%% MÉTODOS PARA LAS COLAS DOBLES (mazos)
 

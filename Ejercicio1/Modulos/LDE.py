@@ -4,6 +4,7 @@ Created on Wed Aug 31 13:56:04 2022
 @author: alumno
 """
 #%%  creación del nodo
+
 class Nodo:
     
     def __init__(self,datoInicial):
@@ -39,6 +40,7 @@ class Nodo:
     def __str__(self):
         return str(self.dato)
 #%% creacion de la lista doblemente enlazada
+
 class ListaDobleEnlazada:
 
     def __init__(self):
@@ -51,32 +53,24 @@ class ListaDobleEnlazada:
         nodo = self.cabeza
         while nodo:
             yield nodo 
-            nodo=nodo.siguiente 
+            nodo = nodo.siguiente 
         
     def __str__(self):
         return str([nodo.dato for nodo in self])
          
-    
-    # def __str__(self):
-    #     lista=[]
-    #     for i in self:
-    #         lista.append(str(i))
-    #     return str(lista)
-        
     def esta_vacia(self):
         return self.tamanio == 0 
-    
+ 
     @property
     def tamanio(self):
-        
         return self._tamanio
         
-        
+#%%
     def agregar(self, item):
         '''
         Parameters
         ----------
-        item : TYPE int, float, str
+        item : any TYPE 
             
         MÉTODO AGREGAR(item): AGREGA UN ELEMENTO (Nodo)
         AL PRINCIPIO DE LA LISTA DOBLEMENTE ENLAZADA
@@ -103,7 +97,7 @@ class ListaDobleEnlazada:
         '''
         Parameters
         ----------
-        item : TYPE
+        item : any TYPE
             DESCRIPTION.
 
         Returns
@@ -131,7 +125,7 @@ class ListaDobleEnlazada:
         posicion : int
             ES LA POSICION DENTRO DE 
             LA LDE EN LA QUE SE INSERTARÁ EL ELEMENTO.
-        item :  str, int, float, booleano
+        item :  any TYPE
             ES EL ELEMENTO QUE SE INSERTARÁ DENTRO DE LA LDE
             EN LA POSICIÓN INDICADA.
 
@@ -141,8 +135,6 @@ class ListaDobleEnlazada:
             DEVUELVE UN IndexError SI LA POSICIÓN ES UN ENTERO NEGATIVO
             O SI ES MAYOR AL TAMAÑO DE LA LDE.
 
-        Returns
-        
         -------
         None.
 
@@ -173,6 +165,25 @@ class ListaDobleEnlazada:
             self._tamanio +=1
    
     def extraer(self, posicion=-1):
+        '''
+        Parameters
+        ----------
+        posicion : TYPE int
+             Por defecto es -1.
+
+        Raises
+        ------
+        IndexError
+            Mientras que la posición pasada sea menor a
+            -1 o sea mayor al tamaño de la lista, devuelve
+            un IndexError.
+
+        Returns
+        -------
+        any TYPE 
+            Retorna el elemento que eliminó en la posición indicada.
+
+        '''
         if posicion < -1 or posicion >= self._tamanio:
             raise IndexError 
             
@@ -198,12 +209,18 @@ class ListaDobleEnlazada:
             actual.anterior = actual.siguiente 
             self._tamanio -=1
             return actual 
-            
-            
+        
         self._tamanio -=1                      
             
           
     def copiar(self):
+        '''
+        Returns
+        -------
+        copia_lista : any TYPE
+            Retorna una copia idéntica de la lista.
+
+        '''
         
         copia_lista = ListaDobleEnlazada()
         for nodo in self:
@@ -211,17 +228,47 @@ class ListaDobleEnlazada:
         return copia_lista 
             
     def concatenar(self,lista):
-       temp = lista.cabeza
-       for i in range(lista.tamanio):
-           self.anexar(temp.dato)
-           temp = temp.siguiente 
-       return self 
+        '''
+        Parameters
+        ----------
+        lista : any TYPE
+
+        Returns
+        -------
+        any TYPE
+            Retorna dos listas concatenadas.
+
+        '''
+        temp = lista.cabeza
+
+        for i in range(lista.tamanio):
+            self.anexar(temp.dato)
+            temp = temp.siguiente 
+        return self 
    
-    def __add__(self,a):
-        return self.concatenar(a)
     
+    def __add__(self,lista):
+        '''
+        Parameters
+        ----------
+        a : lista 
+            Usando el caracter "+" se concatenan las listas.
+
+        Returns
+        -------
+        list
+
+        '''
+        return self.concatenar(lista)
+        
     
     def invertir(self):
+        '''
+        Returns
+        -------
+        Retorna la lista con su orden invertido.
+
+        '''
         nodo1 = self.cabeza 
         nodo2 = nodo1.siguiente 
         temp = self.cabeza
@@ -237,59 +284,34 @@ class ListaDobleEnlazada:
         self.cabeza = nodo1 
         self.cola = temp 
     
-    def ordenar(self):
-        # temp = self.cabeza
-        actual = self.cabeza.siguiente #actual es el nodo que quiero insertar a la izquierda
-        aux = actual
-        posicion = False
-       
-        while actual:
-           
-           
-            while aux.anterior and aux.anterior.dato > actual.dato:
-                aux = aux.anterior
-                posicion = True
-           
-            aux.siguiente = actual.siguiente  # desconecto enlaces para posicionarlo
-            actual.siguiente.anterior = aux 
-           
-            if posicion:
-               
-                if aux.anterior == None :
-                    actual.siguiente = aux
-                    actual.anterior = None
-                    self.cabeza = actual
-                else:
-                    actual.anterior = aux.anterior
-                    actual.siguiente = aux
-                    aux.anterior = actual
-                    aux.anterior.siguiente = actual
- 
-            actual = actual.siguiente #actualiza el siguiente
-        
     
-    # def ordenar (self):
-    #     fin = None
-    #     while self.cabeza != fin:
-    #         actual = self.cabeza #r=actual
-    #         temp = self.cabeza #p = temp
+    def ordenar (self):
+        '''el método de ordenamiento implementado fue el de burbuja. 
+        Este, toma de a dos elementos y los compara: si el primero 
+        es más chico que el segundo, está ordenado y el cambio 
+        no se produce. De lo contrario, invierte las posiciones 
+        de estos dos elementos. '''
+        extremo = None
+        while self.cabeza != extremo:
+            actual = self.cabeza 
+            temp = self.cabeza 
             
-    #         while temp.siguiente != fin: #q=cambia
-    #             cambia = temp.siguiente #Q pasa a ser el siguiente de P
-    #             if temp.dato > cambia.dato:
-    #                 temp.siguiente = cambia.siguiente #el siguiente de p es el siguiente de q
-    #                 cambia.siguiente = temp #q siguiente toma la posicion de p
-    #                 if temp != self.cabeza:
-    #                     actual.siguiente = cambia #el siguiente de r toma la posicion de q
-    #                 else:
-    #                     self.cabeza = cambia
-    #                 aux = temp
-    #                 temp = cambia #p toma la posicion de q
-    #                 cambia = aux #q toma la posicion de aux
-    #             actual = temp #r toma la posicion de p
-    #             temp = temp.siguiente #p toma la posicion de su siguiente
-    #         fin=temp
-    #     return self
+            while temp.siguiente != extremo: 
+                cambio = temp.siguiente 
+                if temp.dato > cambio.dato:
+                    temp.siguiente = cambio.siguiente 
+                    cambio.siguiente = temp 
+                    if temp != self.cabeza:
+                        actual.siguiente = cambio 
+                    else:
+                        self.cabeza = cambio
+                    aux = temp
+                    temp = cambio 
+                    cambio = aux
+                actual = temp 
+                temp = temp.siguiente 
+            extremo = temp
+        return self 
 #%%          
             
 if __name__ == "__main__":
@@ -316,16 +338,13 @@ if __name__ == "__main__":
     lista2.agregar(3)
     lista2.agregar(4)
     lista2.agregar(5)
-
     print(lista2)
+    lista2.insertar(4, "fito")
+    print(lista1.concatenar(lista2))
+    
     # print(lista2.invertir())
     # print(lista2.ordenar())
     
-    # lista3 = ListaDobleEnlazada() 
-    # lista3.agregar(10)
-    # lista3.agregar(100)
-    # lista3.agregar(1000)
-    # print(lista3)
     print(lista1+lista2)
     # print(lista3.ordenar())
     

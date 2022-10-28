@@ -40,6 +40,7 @@ class JuegoGuerra:
             if i%2 != 0:                          # si el resto de pos div 2 ≠ 0:
                 self.mazo2.agregar_carta(carta)   # agrego al mazo 2
                 
+
         return "MAZO REPARTIDO", str(self.mazo1) +  str(self.mazo2)
     
 #%%
@@ -114,3 +115,14 @@ if __name__ == "__main__":
     #print(obj.repartir())
     print(obj.jugar())
     # print(lista)
+
+
+if __name__ == "__main__":
+    obj=JuegoGuerra(3)
+    print(obj.crear_mazo()) #3 es la semilla, que hace que la "mezcla" de las cartas 
+    obj.repartir()  
+    print(obj.mazo1)
+    print(obj.mazo2)
+    #print(obj.repartir())
+    print(obj.jugar())
+
