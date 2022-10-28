@@ -1,5 +1,5 @@
 from Ejercicio1.Modulos.LDE import ListaDobleEnlazada
-import random as rd
+
 '''Importo los métodos de la listadobleEnlazada'''
 
 class ColaDoble():
