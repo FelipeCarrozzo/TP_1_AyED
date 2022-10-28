@@ -1,9 +1,10 @@
 from Ejercicio2.modulos.Mazo import Mazo
 from Ejercicio2.modulos.Carta import Carta 
-# from Ejercicio2.modulos.ColaDoble import ColaDoble
 import random as rd
 
 class JuegoGuerra:
+    def __iter__(self):
+        return iter(self.mazo)
      
     def __init__(self,semilla):
         self.mazomesa = Mazo()
@@ -19,72 +20,97 @@ class JuegoGuerra:
         for numero in valores:
             jerarquia+=1
             for palo in palos:
-                carta=Carta(numero,palo,jerarquia)
+                carta=Carta(numero,palo,jerarquia,"A")
                 lista_cartas.append(carta)
             
         rd.seed(self.semilla)
         rd.shuffle(lista_cartas)
-        # cartas_mezcladas = lista
+
         for carta in lista_cartas:
             self.mazomesa.agregar_carta(carta)
         return self.mazomesa
 
+#%% 
 
-        
     def repartir(self):
-        for i, carta in enumerate(self.mazomesa):
-            if i%2 == 0:
-                self.mazo1.agregar_carta(carta)
+        for i,carta in enumerate(self.mazomesa):  # i es la posición
+            if i%2 == 0:                          # si el resto de pos div 2 = 0:
+                self.mazo1.agregar_carta(carta)   # agregar al mazo 1
                 
-            if i%2 != 0:  
-                self.mazo2.agregar_carta(carta)
+            if i%2 != 0:                          # si el resto de pos div 2 ≠ 0:
+                self.mazo2.agregar_carta(carta)   # agrego al mazo 2
                 
-        return self.mazo1, self.mazo2
+        return "MAZO REPARTIDO", str(self.mazo1) +  str(self.mazo2)
     
+#%%
     def jugar(self):
+        print("-----------------------------------")
+        turno = 0
+        cartas_mesa =  []
+        while turno < 100:
+            turno += 1
 
-        while self.mazo1 and self.mazo2:
-            cartas_mesa =  []
-        
-            c1=self.mazo1.jugar_carta("boca arriba")
-            cartas_mesa.append(c1)
-            c2=self.mazo2.jugar_carta("boca arriba")
-            cartas_mesa.append(c2)
-            '''Tomo la carta de mas arriba de cada mazo
-            y las agrego a carta_mesa respectivamente'''
-            if cartas_mesa[-2] > cartas_mesa[-1]:
-                for i in cartas_mesa:
-                    self.mazo1.agregarFrente(i)
-                #self.mazo1.Jugador_gana(cartas_mesa)
-            elif cartas_mesa[-1] > cartas_mesa[-2]: 
-                for i in cartas_mesa:
-                    self.mazo2.agregarFrente(i)
-                #self.mazo1.Jugador_gana(cartas_mesa)
-            else:
-                for carta in range(0,3):
-                    c3 = self.mazo1.removerFinal()
-                    cartas_mesa.append(c3)
-                    c4 = self.mazo2.removerFinal()
-                    cartas_mesa.append(c4)
-                c1=self.mazo1.jugar_carta("boca arriba") #remueve la carta de arriba
+            while self.mazo1 and self.mazo2:
+    
+                c1=self.mazo1.jugar_carta("boca abajo")
                 cartas_mesa.append(c1)
-                c2=self.mazo2.jugar_carta("boca arriba")
+                c2=self.mazo2.jugar_carta("boca abajo")
                 cartas_mesa.append(c2)
+                '''Tomo la carta de mas arriba de cada mazo
+                y las agrego a carta_mesa respectivamente'''
+                if cartas_mesa[-2] > cartas_mesa[-1]:
+                    for i in cartas_mesa:
+                        print(cartas_mesa)
+                        self.mazo1.jugador_gana(i)
+                    
+                    #self.mazo1.Jugador_gana(cartas_mesa)
+                elif cartas_mesa[-1] > cartas_mesa[-2]: 
+                    for i in cartas_mesa:
+                        print(cartas_mesa)
+                        self.mazo2.jugador_gana(i)
+                        
+                    #self.mazo1.Jugador_gana(cartas_mesa)
+                else:
+                    print("***GUERRA***")
+                    for carta in range(0,3):
+                        
+                    
+                        c3 = self.mazo1.jugar_carta()
+                        cartas_mesa.append(c3)
+                        c4 = self.mazo2.jugar_carta()
+                        cartas_mesa.append(c4)
+                    # c1=self.mazo1.jugar_carta("boca arriba") #remueve la carta de arriba
+                    # cartas_mesa.append(c1)
+                    # c2=self.mazo2.jugar_carta("boca arriba")
+                    # cartas_mesa.append(c2)
+                    
+            
                 
-            return cartas_mesa
+        
+            if self.mazo1 == None:
+                print("jugador 2 gana el juego")
+                break
+            elif self.mazo2 == None:
+                print("Jugador 1 es el ganador")
+                break
+            
+                # return cartas_mesa
+            
+                    
                 
-                
-
-
-
-
+                    
+#%%
 
 
 if __name__ == "__main__":
-    obj=JuegoGuerra(3)
+    
+    obj=JuegoGuerra(2)
     obj.crear_mazo() #3 es la semilla, que hace que la "mezcla" de las cartas 
-    obj.repartir()   #(shuffle) sea siempre igual
-    print(obj.mazo1)
-    print(obj.mazo2)
+    print(obj.repartir())
+    print()
+    print()
+    # print(obj.mazo1)
+    # print(obj.mazo2)
     #print(obj.repartir())
-    # print(obj.jugar())
+    print(obj.jugar())
+    # print(lista)
