@@ -1,10 +1,10 @@
-from Ejercicio1.Modulos.LDE import ListaDobleEnlazada
-
+from Ejercicio_1.modulos.LDE import ListaDobleEnlazada
 import random
 import time
 import matplotlib.pyplot as plt
 
 valores_n = [10**i for i in range(1,4)]
+
 tiempo = []
 
 for n in valores_n:
@@ -22,7 +22,7 @@ plt.clf()
 plt.plot(valores_n, tiempo, label="Ordenamiento por inserción")
 
 #plt.yscale('log')
-plt.xlabel("tamaño de la lista")
-plt.ylabel("tiempo del algoritmo")
+plt.xlabel("Tamaño de la lista")
+plt.ylabel("Tiempo del algoritmo")
 plt.title("Tiempo en fn. del nro de elementos")
 plt.legend()
