@@ -4,6 +4,7 @@ import time
 import matplotlib.pyplot as plt
 
 
+
 valores_n = range(100,1000,100)
 tiempo = []
 
