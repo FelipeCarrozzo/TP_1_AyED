@@ -3,8 +3,8 @@ import random
 import time
 import matplotlib.pyplot as plt
 
-valores_n = [10**i for i in range(1,4)]
 
+valores_n = range(100,1000,100)
 tiempo = []
 
 for n in valores_n:
