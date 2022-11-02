@@ -1,4 +1,4 @@
-from ejercicio_1.modulos.LDE import ListaDobleEnlazada
+from Ejercicio_1.modulos.LDE import ListaDobleEnlazada
 import random as rd
 
 #%%
@@ -31,7 +31,7 @@ class ColaDoble():
         return self.items.extraer(0) #para cuando se juega una carta
 
     def tamanio(self):
-        return len(self.items) 
+        return self.items.tamanio 
     
 #%%
 

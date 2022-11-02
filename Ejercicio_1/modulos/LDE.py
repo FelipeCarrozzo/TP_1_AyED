@@ -39,6 +39,15 @@ class Nodo:
         
     def __str__(self):
         return str(self.dato)
+    
+    def __eq__(self, otro):
+        return self._dato == otro._dato
+    
+    def __lt__(self,otro):
+        return self._dato < otro._dato
+        
+    def __gt__(self,otro):
+        return self._dato > otro._dato
 #%% creacion de la lista doblemente enlazada
 
 class ListaDobleEnlazada:
