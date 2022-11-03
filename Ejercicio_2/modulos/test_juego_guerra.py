@@ -6,7 +6,7 @@ Created on Sun Aug 21 11:23:53 2022
 """
 
 
-from ejercicio_2.modulos.juego_guerra import JuegoGuerra 
+from Ejercicio_2.modulos.juego_guerra import JuegoGuerra 
 import unittest
 
 
