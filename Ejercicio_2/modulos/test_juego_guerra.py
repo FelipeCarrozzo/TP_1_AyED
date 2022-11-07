@@ -54,7 +54,7 @@ class TestJuegoGuerra(unittest.TestCase):
     def test_resulta_gana_jugador2(self):
         """compruebo el número de turnos de 3 partidas con
         el jugador 2 como ganador
-        """        
+        """
         self.juego_4.iniciar_juego()
         self.juego_5.iniciar_juego()
         self.juego_6.iniciar_juego()
