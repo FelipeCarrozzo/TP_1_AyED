@@ -49,14 +49,14 @@ class Carta:
         jerarquia : TYPE optional
             Por defecto es 0.
 
-        Returns
+        Returns 
         -------
         None.
 
         '''
         self._valor = valor
         self._palo = palo
-        self.estado = estado
+        self._estado = estado
         self._jerarquia = jerarquia
             
     def __str__(self):
@@ -117,19 +117,18 @@ class Mazo:
         
     def jugar_carta(self, nuevo_estado ="a"): #metodo para dar vuelta una carta
         carta = self.mazo.removerFinal()
-        carta.estado = nuevo_estado 
-        return  (carta)     
+        return carta     
     
     
         
-    def retirar_mesa(self,cartas_mesa):
-        for i in cartas_mesa:
-            cartas_mesa.removerFinal()
+    def dar_vuelta(self):
+        for i in self:
+            i.dato.estado = "a"
             
     def __len__(self):
         return self.mazo.tamanio()
     
-    def jugador_gana(self,carta, nuevo_estado ="a"): #metodo para agregar las cartas ganadas ABAJO del mazo
+    def jugador_gana(self,carta, nuevo_estado ="Boca abajo"): #metodo para agregar las cartas ganadas ABAJO del mazo
         carta.dato.estado = nuevo_estado  
     
         self.mazo.agregarFrente(carta)
@@ -150,6 +149,7 @@ class JuegoGuerra:
         self.semilla = random_seed 
         self.turnos_jugados = 0
         self.ganador = ""
+        self.empate = "empate"
         
     def crear_mazo(self):    
         valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
@@ -191,11 +191,11 @@ class JuegoGuerra:
         while self.turnos_jugados < 10000:
             if guerra == False:
                 try:
-                    self.turnos_jugados += 1
                     c1=self.mazo1.jugar_carta()
                     cartas_mesa.append(c1.dato)
                     c2=self.mazo2.jugar_carta()
                     cartas_mesa.append(c2.dato)
+                    self.turnos_jugados += 1
                     '''Tomo la carta de mas arriba de cada mazo
                     y las agrego a carta_mesa respectivamente'''
                 except IndexError:
@@ -209,7 +209,9 @@ class JuegoGuerra:
                     
                 
                 print("turno número:",self.turnos_jugados)
+                
                 for carta in cartas_mesa:
+                    carta.dato.estado = "a"
                     print(carta)
                 print("---------")
                 print("\n")
@@ -218,8 +220,8 @@ class JuegoGuerra:
                         self.mazo1.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(self.mazo1, "\n","------","\n")
-                    print(self.mazo2)
+                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                         
@@ -228,8 +230,8 @@ class JuegoGuerra:
                         self.mazo2.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(self.mazo1, "\n","------","\n")
-                    print(self.mazo2)
+                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -245,10 +247,15 @@ class JuegoGuerra:
                                 cartas_mesa.append(c3.dato)
                                 c4 = self.mazo2.jugar_carta("Boca")
                                 cartas_mesa.append(c4.dato)
-                            c1=self.mazo1.jugar_carta("a")
+                            c1=self.mazo1.jugar_carta()
                             cartas_mesa.append(c1.dato)
                             c2=self.mazo2.jugar_carta("a")
                             cartas_mesa.append(c2.dato)
+                            for carta in cartas_mesa[-2:]:    #Desde la anteultima carta en adelante dar vuelta
+                                carta.dato.estado = "a"
+                                
+                            
+                            
                 
                         except IndexError:
                             print("fin del juego")
@@ -271,8 +278,8 @@ class JuegoGuerra:
                         self.mazo1.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(self.mazo1, "\n","------","\n")
-                    print(self.mazo2)
+                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -282,8 +289,8 @@ class JuegoGuerra:
                         self.mazo2.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(self.mazo1, "\n","------","\n")
-                    print(self.mazo2)
+                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -295,14 +302,16 @@ class JuegoGuerra:
                         print("***GUERRA***")
                         for carta in range(0,3):
                             '''Se juegan 4 cartas más por jugador'''
-                            c3 = self.mazo1.jugar_carta("Boca abajo")
+                            c3 = self.mazo1.jugar_carta("Boca ")
                             cartas_mesa.append(c3.dato)
-                            c4 = self.mazo2.jugar_carta("Boca abajo")
+                            c4 = self.mazo2.jugar_carta("Boca ")
                             cartas_mesa.append(c4.dato)
-                        c1=self.mazo1.jugar_carta("a")
+                        c1=self.mazo1.jugar_carta()
                         cartas_mesa.append(c1.dato)
-                        c2=self.mazo2.jugar_carta("a")
+                        c2=self.mazo2.jugar_carta()
                         cartas_mesa.append(c2.dato)
+                        for carta in cartas_mesa[8:10]:
+                                carta.dato.estado = "a"
                 
                     except IndexError:
                               if len(self.mazo1) == 0:
@@ -315,20 +324,24 @@ class JuegoGuerra:
                    
                     
                     print("cartas en juego:")
+                    for carta in cartas_mesa[-2:]:
+                        carta.dato.estado = "a"
                     for carta in cartas_mesa:
                         print(carta)
+                    
+                        
          
         if self.mazo1 and self.mazo2:
-            return("empate")
+            return(self.empate)
                 
              
 
 if __name__ == "__main__":
     
-    obj=JuegoGuerra(random_seed= 314)
+    obj=JuegoGuerra(random_seed= 190)
     # obj.crear_mazo() #3 es la semilla, que hace que la "mezcla" de las cartas 
     # obj.repartir()
-
+    print(obj.mazo1)
     print(len(obj.mazo1))
     print(obj.mazo2)
     print()
@@ -336,3 +349,5 @@ if __name__ == "__main__":
     
     print(obj.iniciar_juego())
     print(obj.turnos_jugados)
+    
+    
