@@ -1,4 +1,4 @@
-from Ejercicio_1.modulos.LDE_sin_metodos_m import ListaDobleEnlazada
+from Ejercicio_1.modulos.LDE import ListaDobleEnlazada
 import random
 import time
 import matplotlib.pyplot as plt

@@ -1,4 +1,4 @@
-from Ejercicio_1.modulos.LDE import ListaDobleEnlazada
+from Ejercicio_1.modulos.LDE_con_metodos_m import ListaDobleEnlazada
 import random as rd
 
 #%%
