@@ -185,7 +185,7 @@ class JuegoGuerra:
     def iniciar_juego(self):
         self.crear_mazo()
         self.repartir()
-        print("-----------------------------------")
+        #print("-----------------------------------")
         cartas_mesa =  []
         guerra = False
         while self.turnos_jugados < 10000:
@@ -208,20 +208,20 @@ class JuegoGuerra:
                         return self.ganador
                     
                 
-                print("turno número:",self.turnos_jugados)
+                # #print("turno número:",self.turnos_jugados)
                 
                 for carta in cartas_mesa:
                     carta.dato.estado = "a"
-                    print(carta)
-                print("---------")
-                print("\n")
+                    #print(carta)
+                # #print("---------")
+                # #print("\n")
                 if cartas_mesa[-2] > cartas_mesa[-1]:   # Si el jugador 1 tiene la carta mas grande, entra en esta condición
                     for i in cartas_mesa:
                         self.mazo1.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
-                    print(len(self.mazo2),self.mazo2,"\n")
+                    # #print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    # #print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                         
@@ -230,8 +230,8 @@ class JuegoGuerra:
                         self.mazo2.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
-                    print(len(self.mazo2),self.mazo2,"\n")
+                    # #print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    # #print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -240,7 +240,7 @@ class JuegoGuerra:
                     if guerra == False:
                         guerra = True
                         try:
-                            print("***GUERRA***")
+                            # #print("***GUERRA***")
                             for carta in range(0,3):
                                 '''Se juegan 4 cartas más por jugador'''
                                 c3 = self.mazo1.jugar_carta("Boca")
@@ -258,7 +258,7 @@ class JuegoGuerra:
                             
                 
                         except IndexError:
-                            print("fin del juego")
+                            #print("fin del juego")
                             if len(self.mazo1) == 0:
                                 self.ganador = "jugador 2"
                                 return self.ganador
@@ -268,9 +268,10 @@ class JuegoGuerra:
                                 return self.ganador
                               
                           
-                    print("cartas en juego:")
+                    #print("cartas en juego:")
                     for carta in cartas_mesa:
-                        print(carta)
+                        # print(carta)
+                        pass
                     
             else:
                 if cartas_mesa[-2] > cartas_mesa[-1]:
@@ -278,8 +279,8 @@ class JuegoGuerra:
                         self.mazo1.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
-                    print(len(self.mazo2),self.mazo2,"\n")
+                    #print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    #print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -289,8 +290,8 @@ class JuegoGuerra:
                         self.mazo2.jugador_gana(i)
                         
                     cartas_mesa = []
-                    print(len(self.mazo1),self.mazo1, "\n","------","\n")
-                    print(len(self.mazo2),self.mazo2,"\n")
+                    #print(len(self.mazo1),self.mazo1, "\n","------","\n")
+                    #print(len(self.mazo2),self.mazo2,"\n")
                     if guerra == True:
                         guerra = False
                             
@@ -299,7 +300,7 @@ class JuegoGuerra:
                     if guerra == False:
                         guerra = True
                     try:
-                        print("***GUERRA***")
+                        #print("***GUERRA***")
                         for carta in range(0,3):
                             '''Se juegan 4 cartas más por jugador'''
                             c3 = self.mazo1.jugar_carta("Boca ")
@@ -323,11 +324,12 @@ class JuegoGuerra:
                                   break
                    
                     
-                    print("cartas en juego:")
+                    #print("cartas en juego:")
                     for carta in cartas_mesa[-2:]:
                         carta.dato.estado = "a"
                     for carta in cartas_mesa:
-                        print(carta)
+                        #print(carta)
+                        pass
                     
                         
          
@@ -341,13 +343,13 @@ if __name__ == "__main__":
     obj=JuegoGuerra(random_seed= 190)
     # obj.crear_mazo() #3 es la semilla, que hace que la "mezcla" de las cartas 
     # obj.repartir()
-    print(obj.mazo1)
-    print(len(obj.mazo1))
-    print(obj.mazo2)
-    print()
-    print()
+    #print(obj.mazo1)
+    #print(len(obj.mazo1))
+    #print(obj.mazo2)
+    #print()
+    #print()
     
-    print(obj.iniciar_juego())
-    print(obj.turnos_jugados)
+    #print(obj.iniciar_juego())
+    #print(obj.turnos_jugados)
     
     
