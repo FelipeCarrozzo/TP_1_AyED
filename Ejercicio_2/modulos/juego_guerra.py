@@ -155,7 +155,7 @@ class JuegoGuerra:
         valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
         palos = ['♠', '♥', '♦', '♣']
         lista_cartas = [] 
-        jerarquia=0
+        jerarquia=0    #para que las cartas sean comparables por número
         for numero in valores:
             jerarquia+=1
             for palo in palos:
